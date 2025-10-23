@@ -51,7 +51,7 @@ This system implements a comprehensive multi-stage pipeline that creates high-qu
 - **Result**: User control over speed/quality trade-off
 
 ## Quick Start
-
+Frontend and interface preview: https://lzucaxd.github.io/bedtime-story-generation/
 ### Prerequisites
 - Python 3.7+
 - OpenAI API key
