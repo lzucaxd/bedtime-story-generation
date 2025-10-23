@@ -2,7 +2,7 @@
 
 An AI-powered bedtime story generator that creates high-quality stories for children ages 5-10 using advanced multi-stage agentic systems with LLM judges and efficiency improvements.
 
-## 📋 Assignment Overview
+## Assignment Overview
 
 This project implements a bedtime story generator that takes simple story requests and uses prompting strategies with an LLM judge to create age-appropriate stories (ages 5-10). The system incorporates advanced agent design strategies, story arcs, and user feedback mechanisms.
 
@@ -18,39 +18,39 @@ This project implements a bedtime story generator that takes simple story reques
 
 This system implements a comprehensive multi-stage pipeline that creates high-quality bedtime stories through sophisticated prompting strategies and quality assurance mechanisms:
 
-### 🎯 **Stage 1: Request Categorization**
+### **Stage 1: Request Categorization**
 - Analyzes user requests to determine story category, themes, and tone
 - Uses specialized prompting to extract key story elements
 - **Result**: Context-aware story generation with appropriate themes
 
-### 🎭 **Stage 2: Character Name Generation**
+### **Stage 2: Character Name Generation**
 - Generates unique character names based on story context
 - Tracks names globally to prevent repetition across sessions
 - Culturally diverse and age-appropriate naming
 - **Result**: No more repetitive character names, enhanced story variety
 
-### 🎨 **Stage 3: Multi-Plan Selection**
+### **Stage 3: Multi-Plan Selection**
 - Generates 3 different story approaches (emotional, action, discovery)
 - Evaluates all plans and selects the best one before generation
 - **Result**: Better story structure and narrative potential
 
-### 📖 **Stage 4: Story Generation**
+### **Stage 4: Story Generation**
 - Writes complete stories using the best plan and unique character names
 - Age-appropriate vocabulary and content for ages 5-10
 - **Result**: High-quality stories with engaging narratives
 
-### ⚖️ **Stage 5: LLM Judge Quality Assurance**
+### **Stage 5: LLM Judge Quality Assurance**
 - Evaluates stories on 5 dimensions (age appropriateness, engagement, structure, educational value, bedtime suitability)
 - Provides specific, actionable feedback with exact locations and fixes
 - **Result**: Consistent quality and iterative improvement
 
-### 🔧 **Stage 6: Adaptive Refinement**
+### **Stage 6: Adaptive Refinement**
 - **Fast Mode**: 2 API calls, 5-8 seconds, 7-8/10 quality
 - **Balanced Mode**: 5-6 API calls, 12-15 seconds, 8-9/10 quality  
 - **Best Mode**: 8-10 API calls, 20-30 seconds, 9-10/10 quality
 - **Result**: User control over speed/quality trade-off
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 - Python 3.7+
@@ -78,7 +78,7 @@ python app.py
 # Then visit http://localhost:5000
 ```
 
-## Interview Presentation Highlights
+## Highlights
 
 ### **What Makes This Special**
 - **Advanced Agentic Design**: Multi-stage pipeline with specialized LLM agents
@@ -98,7 +98,7 @@ python app.py
 - **Scalability**: Adaptive modes for different user needs and budgets
 - **Transparency**: Full visibility into generation process and quality scores
 
-## 🎯 Evaluation Criteria Response
+## Evaluation Criteria Response
 
 ### **System Efficacy for Creating Good Stories**
 - **Multi-Stage Quality Assurance**: LLM judge evaluates stories on 5 dimensions with specific, actionable feedback
@@ -192,7 +192,7 @@ The system implements a comprehensive multi-stage pipeline that transforms simpl
 ┌─────────────────────────────────────────────────────────────────────────────────┐
 │                      LLM JUDGE + REFINEMENT LOOP                             │
 │  ┌─────────────────────┐              ┌─────────────────────────────────────┐  │
-│  │     LLM JUDGE      │              │     STORY REFINER                 │  │
+│  │     LLM JUDGE      │               │       STORY REFINER                 │  │
 │  │                     │              │                                     │  │
 │  │ Evaluates on 5 dims:│              │ • Improves based on feedback        │  │
 │  │ • Age appropriateness│              │ • Temperature: 0.7                 │  │
@@ -212,7 +212,7 @@ The system implements a comprehensive multi-stage pipeline that transforms simpl
 │           │                                      │                            │
 │           ▼                                      │                            │
 │  ┌─────────────────────┐                        │                            │
-│  │   🤔 DECISION       │                        │                            │
+│  │      DECISION       │                        │                            │
 │  │                     │                        │                            │
 │  │ IF overall_score    │                        │                            │
 │  │ >= 7.5: ACCEPT      │                        │                            │
@@ -284,7 +284,7 @@ The system implements a comprehensive multi-stage pipeline that transforms simpl
 - **Decision Logic**: Accept if score ≥ 7.5, otherwise refine (max 2 iterations)
 - **Modes**: Fast (2 calls), Balanced (5-6 calls), Best (8-10 calls)
 
-## 📊 Quality Evaluation
+## Quality Evaluation
 
 The LLM Judge evaluates stories on 5 key dimensions:
 
@@ -310,7 +310,7 @@ print(f"Quality Score: {result['final_score']:.1f}/10")
 print(f"API Calls Used: {result['metadata']['total_api_calls']}")
 ```
 
-## 🔧 API Efficiency
+## API Efficiency
 
 | Scenario | API Calls | Description |
 |----------|-----------|-------------|
@@ -318,26 +318,6 @@ print(f"API Calls Used: {result['metadata']['total_api_calls']}")
 | **Typical** | 7 | One refinement iteration needed |
 | **Worst Case** | 9 | Maximum iterations reached |
 
-## 📁 Project Structure
-
-```
-├── main.py                 # Tier 2 advanced story generation system
-├── app.py                  # Flask web server with API endpoints
-├── test_demo.py           # Demo script (no API calls required)
-├── requirements.txt       # Python dependencies
-├── .env                   # Environment variables (API key) - DO NOT COMMIT
-├── .gitignore            # Git ignore file to protect sensitive data
-├── system_architecture.md # Detailed system architecture and block diagram
-├── TIER2_DOCUMENTATION.md # Comprehensive technical documentation
-├── WEB_DEMO_README.md     # Web interface setup and deployment guide
-├── templates/             # Flask HTML templates
-│   └── index.html        # Main web interface
-├── static/               # Static web assets
-│   ├── css/styles.css    # Modern CSS with animations
-│   └── js/script.js      # Interactive JavaScript
-├── github-pages/         # Static version for GitHub Pages
-└── README.md             # This file
-```
 
 
 ### **Problem Statement**
@@ -408,15 +388,21 @@ The system includes comprehensive error handling:
 
 ## Future Enhancements
 
-If given 2 more hours, the system could be enhanced with:
-
 1. **Character Consistency Tracker** - Ensures character traits remain consistent
 2. **Theme Reinforcement System** - Subtly weaves educational elements
 3. **Personalized Adaptation** - Learns from user preferences over time
 4. **Interactive Continuations** - "What happens next?" feature
 5. **Voice Synthesis Integration** - Audio bedtime stories
+7. **Retrieval-Augmented Generation (RAG)** - Ground stories in factual knowledge base for educational accuracy, with source citation for parent verification and fact-checking capabilities
+8. **Request History & Favorites** - Simple local storage of past requests and ability to "favorite" stories, with quick re-generate button for similar stories
+9. **Export Options** - Download story as PDF with nice formatting, or copy as formatted text with title and metadata
+10. **Adaptive Plan Selection** - Dynamically decide whether to use multi-plan based on request complexity: simple requests (e.g., "story about a cat") use single plan (2 fewer API calls), while complex requests (e.g., "story about overcoming fear with friends") use full 3-plan evaluation—reducing average API usage by 30-40%
+11. **Dynamic Temperature Adjustment** - Meta-learning system where refinement temperature adjusts based on judge feedback: if story criticized as "too generic," increase temperature to 0.9; if "too chaotic," decrease to 0.6, allowing targeted fixes rather than blanket refinement
+12. **Confidence-Aware Generation** - Add uncertainty estimation to judge output (confidence scores per dimension), flagging low-confidence stories for mandatory second refinement pass regardless of score—catching edge cases before user sees them
 
-## 📈 Performance Metrics
+
+
+## Performance Metrics
 
 - **Average Story Length**: 300-500 words
 - **Generation Time**: 30-60 seconds (depending on refinements)
