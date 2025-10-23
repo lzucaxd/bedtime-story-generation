@@ -396,7 +396,7 @@ The system includes comprehensive error handling:
 7. **Retrieval-Augmented Generation (RAG)** - Ground stories in factual knowledge base for educational accuracy, with source citation for parent verification and fact-checking capabilities
 8. **Request History & Favorites** - Simple local storage of past requests and ability to "favorite" stories, with quick re-generate button for similar stories
 9. **Export Options** - Download story as PDF with nice formatting, or copy as formatted text with title and metadata
-10. **Adaptive Plan Selection** - Dynamically decide whether to use multi-plan based on request complexity: simple requests (e.g., "story about a cat") use single plan (2 fewer API calls), while complex requests (e.g., "story about overcoming fear with friends") use full 3-plan evaluation—reducing average API usage by 30-40%
+10. **Adaptive Plan Selection** - Dynamically decide whether to use multi-plan based on request complexity: simple requests (e.g., "story about a cat") use single plan (2 fewer API calls), while complex requests (e.g., "story about overcoming fear with friends") use full 3-plan evaluation, reducing average API usage by 30-40%
 11. **Dynamic Temperature Adjustment** - Meta-learning system where refinement temperature adjusts based on judge feedback: if story criticized as "too generic," increase temperature to 0.9; if "too chaotic," decrease to 0.6, allowing targeted fixes rather than blanket refinement
 12. **Confidence-Aware Generation** - Add uncertainty estimation to judge output (confidence scores per dimension), flagging low-confidence stories for mandatory second refinement pass regardless of score—catching edge cases before user sees them
 
