@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌟 AI Bedtime Story Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="title">
+                    <i class="fas fa-moon"></i>
+                    AI Bedtime Story Generator
+                </h1>
+                <p class="subtitle">Advanced System - Create magical stories for children ages 5-10</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Mode Selection -->
+            <section class="mode-selection">
+                <h2>Choose Your Story Mode</h2>
+                <div class="mode-cards">
+                    <div class="mode-card" data-mode="fast">
+                        <div class="mode-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h3>Fast Mode</h3>
+                        <div class="mode-stats">
+                            <span class="stat"><i class="fas fa-clock"></i> 5-8 sec</span>
+                            <span class="stat"><i class="fas fa-bolt"></i> 2 API calls</span>
+                            <span class="stat"><i class="fas fa-star"></i> 7-8/10 quality</span>
+                        </div>
+                        <p>Perfect for quick stories and simple requests</p>
+                    </div>
+
+                    <div class="mode-card active" data-mode="balanced">
+                        <div class="mode-icon">
+                            <i class="fas fa-balance-scale"></i>
+                        </div>
+                        <h3>Balanced Mode</h3>
+                        <div class="mode-stats">
+                            <span class="stat"><i class="fas fa-clock"></i> 12-15 sec</span>
+                            <span class="stat"><i class="fas fa-bolt"></i> 5-6 API calls</span>
+                            <span class="stat"><i class="fas fa-star"></i> 8-9/10 quality</span>
+                        </div>
+                        <p>Default mode with great quality and efficiency</p>
+                    </div>
+
+                    <div class="mode-card" data-mode="best">
+                        <div class="mode-icon">
+                            <i class="fas fa-gem"></i>
+                        </div>
+                        <h3>Best Mode</h3>
+                        <div class="mode-stats">
+                            <span class="stat"><i class="fas fa-clock"></i> 20-30 sec</span>
+                            <span class="stat"><i class="fas fa-bolt"></i> 8-10 API calls</span>
+                            <span class="stat"><i class="fas fa-star"></i> 9-10/10 quality</span>
+                        </div>
+                        <p>Premium quality with guaranteed refinements</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Story Input -->
+            <section class="story-input">
+                <h2>What story would you like to hear?</h2>
+                <div class="input-container">
+                    <textarea 
+                        id="storyRequest" 
+                        placeholder="Tell me about a brave little rabbit who learns to be kind..."
+                        rows="3"
+                    ></textarea>
+                    <div class="example-requests">
+                        <span class="example-label">Try these examples:</span>
+                        <div class="examples">
+                            <button class="example-btn" data-example="A story about a little dragon who is afraid of the dark">
+                                <i class="fas fa-dragon"></i> Brave Dragon
+                            </button>
+                            <button class="example-btn" data-example="A story about a shy turtle who makes new friends">
+                                <i class="fas fa-turtle"></i> Shy Turtle
+                            </button>
+                            <button class="example-btn" data-example="An adventure where a robot learns about emotions">
+                                <i class="fas fa-robot"></i> Learning Robot
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Generate Button -->
+            <section class="generate-section">
+                <button id="generateBtn" class="generate-btn">
+                    <i class="fas fa-magic"></i>
+                    Generate Story
+                </button>
+                <div class="loading-indicator" id="loadingIndicator">
+                    <div class="spinner"></div>
+                    <span id="loadingText">Creating your story...</span>
+                </div>
+            </section>
+
+            <!-- Story Output -->
+            <section class="story-output" id="storyOutput">
+                <div class="story-header">
+                    <h2><i class="fas fa-book"></i> Your Bedtime Story</h2>
+                    <div class="story-meta">
+                        <span class="meta-item" id="storyMode"></span>
+                        <span class="meta-item" id="storyCategory"></span>
+                        <span class="meta-item" id="storyScore"></span>
+                        <span class="meta-item" id="apiCalls"></span>
+                    </div>
+                </div>
+                <div class="story-content" id="storyContent"></div>
+                <div class="story-actions">
+                    <button class="action-btn" id="newStoryBtn">
+                        <i class="fas fa-plus"></i> New Story
+                    </button>
+                    <button class="action-btn" id="copyBtn">
+                        <i class="fas fa-copy"></i> Copy Story
+                    </button>
+                    <button class="action-btn" id="shareBtn">
+                        <i class="fas fa-share"></i> Share
+                    </button>
+                </div>
+            </section>
+
+            <!-- Features Section -->
+            <section class="features">
+                <h2>🌟 Advanced Features</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h3>Multi-Plan Selection</h3>
+                        <p>Generates 3 different story approaches, then picks the best one. Saves 60% of API tokens!</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h3>Structured Critique</h3>
+                        <p>Provides specific, actionable feedback with exact locations and fixes for precise improvements.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h3>Adaptive Modes</h3>
+                        <p>Choose between Fast, Balanced, or Best modes based on your speed and quality needs.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- API Status Notice -->
+            <section class="demo-notice">
+                <div class="notice-content">
+                    <h3><i class="fas fa-info-circle"></i> System Status</h3>
+                    <p>This is the full AI-powered system with real story generation! Make sure you have:</p>
+                    <ol>
+                        <li>✅ Set up your OpenAI API key in the .env file</li>
+                        <li>✅ Flask backend server running</li>
+                        <li>✅ Connected to the live API endpoints</li>
+                    </ol>
+                    <p>Ready to generate amazing bedtime stories! 🌟</p>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <p>&copy; 2024 AI Bedtime Story Generator - Advanced System</p>
+                <div class="footer-links">
+                    <a href="https://github.com" target="_blank">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                    <a href="#" onclick="showAbout()">
+                        <i class="fas fa-info-circle"></i> About
+                    </a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- About Modal -->
+    <div class="modal" id="aboutModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>About This Project</h2>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>This is an advanced bedtime story generator built with a multi-stage agentic system featuring an LLM judge for quality assurance.</p>
+                <h3>Key Features:</h3>
+                <ul>
+                    <li><strong>Multi-Plan Selection:</strong> Evaluates multiple story approaches before generation</li>
+                    <li><strong>Structured Critique:</strong> Provides actionable feedback with specific improvements</li>
+                    <li><strong>Adaptive Modes:</strong> Choose between speed and quality optimization</li>
+                    <li><strong>Age-Appropriate:</strong> Designed specifically for children ages 5-10</li>
+                </ul>
+                <p>Built with OpenAI's GPT-3.5-turbo and advanced prompt engineering techniques.</p>
+                <h3>Demo Mode:</h3>
+                <p>This GitHub Pages version demonstrates the interface and features. For full functionality, deploy the Flask backend with your OpenAI API key.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

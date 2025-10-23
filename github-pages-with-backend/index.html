@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌟 AI Bedtime Story Generator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="title">
+                    <i class="fas fa-moon"></i>
+                    AI Bedtime Story Generator
+                </h1>
+                <p class="subtitle">Advanced System - Create magical stories for children ages 5-10</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Mode Selection -->
+            <section class="mode-selection">
+                <h2>Choose Your Story Mode</h2>
+                <div class="mode-cards">
+                    <div class="mode-card" data-mode="fast">
+                        <div class="mode-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h3>Fast Mode</h3>
+                        <div class="mode-stats">
+                            <span class="stat"><i class="fas fa-clock"></i> 5-8 sec</span>
+                            <span class="stat"><i class="fas fa-bolt"></i> 2 API calls</span>
+                            <span class="stat"><i class="fas fa-star"></i> 7-8/10 quality</span>
+                        </div>
+                        <p>Perfect for quick stories and simple requests</p>
+                    </div>
+
+                    <div class="mode-card active" data-mode="balanced">
+                        <div class="mode-icon">
+                            <i class="fas fa-balance-scale"></i>
+                        </div>
+                        <h3>Balanced Mode</h3>
+                        <div class="mode-stats">
+                            <span class="stat"><i class="fas fa-clock"></i> 12-15 sec</span>
+                            <span class="stat"><i class="fas fa-bolt"></i> 5-6 API calls</span>
+                            <span class="stat"><i class="fas fa-star"></i> 8-9/10 quality</span>
+                        </div>
+                        <p>Default mode with great quality and efficiency</p>
+                    </div>
+
+                    <div class="mode-card" data-mode="best">
+                        <div class="mode-icon">
+                            <i class="fas fa-gem"></i>
+                        </div>
+                        <h3>Best Mode</h3>
+                        <div class="mode-stats">
+                            <span class="stat"><i class="fas fa-clock"></i> 20-30 sec</span>
+                            <span class="stat"><i class="fas fa-bolt"></i> 8-10 API calls</span>
+                            <span class="stat"><i class="fas fa-star"></i> 9-10/10 quality</span>
+                        </div>
+                        <p>Premium quality with guaranteed refinements</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Story Input -->
+            <section class="story-input">
+                <h2>What story would you like to hear?</h2>
+                <div class="input-container">
+                    <textarea 
+                        id="storyRequest" 
+                        placeholder="Tell me about a brave little rabbit who learns to be kind..."
+                        rows="3"
+                    ></textarea>
+                    <div class="example-requests">
+                        <span class="example-label">Try these examples:</span>
+                        <div class="examples">
+                            <button class="example-btn" data-example="A story about a little dragon who is afraid of the dark">
+                                <i class="fas fa-dragon"></i> Brave Dragon
+                            </button>
+                            <button class="example-btn" data-example="A story about a shy turtle who makes new friends">
+                                <i class="fas fa-turtle"></i> Shy Turtle
+                            </button>
+                            <button class="example-btn" data-example="An adventure where a robot learns about emotions">
+                                <i class="fas fa-robot"></i> Learning Robot
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Generate Button -->
+            <section class="generate-section">
+                <button id="generateBtn" class="generate-btn">
+                    <i class="fas fa-magic"></i>
+                    Generate Story
+                </button>
+                <div class="loading-indicator" id="loadingIndicator">
+                    <div class="spinner"></div>
+                    <span id="loadingText">Creating your story...</span>
+                </div>
+            </section>
+
+            <!-- Story Output -->
+            <section class="story-output" id="storyOutput">
+                <div class="story-header">
+                    <h2><i class="fas fa-book"></i> Your Bedtime Story</h2>
+                    <div class="story-meta">
+                        <span class="meta-item" id="storyMode"></span>
+                        <span class="meta-item" id="storyCategory"></span>
+                        <span class="meta-item" id="storyScore"></span>
+                        <span class="meta-item" id="apiCalls"></span>
+                    </div>
+                </div>
+                <div class="story-content" id="storyContent"></div>
+                <div class="story-actions">
+                    <button class="action-btn" id="newStoryBtn">
+                        <i class="fas fa-plus"></i> New Story
+                    </button>
+                    <button class="action-btn" id="copyBtn">
+                        <i class="fas fa-copy"></i> Copy Story
+                    </button>
+                    <button class="action-btn" id="shareBtn">
+                        <i class="fas fa-share"></i> Share
+                    </button>
+                </div>
+            </section>
+
+            <!-- Backend Status -->
+            <section class="demo-notice">
+                <div class="notice-content">
+                    <h3><i class="fas fa-info-circle"></i> Backend Connection</h3>
+                    <p>This frontend connects to a deployed backend API for real story generation.</p>
+                    <p><strong>Backend URL:</strong> <span id="backendUrl">Detecting...</span></p>
+                    <p><strong>Status:</strong> <span id="backendStatus">Checking...</span></p>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <p>&copy; 2024 AI Bedtime Story Generator - Advanced System</p>
+                <div class="footer-links">
+                    <a href="https://github.com" target="_blank">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                    <a href="#" onclick="showAbout()">
+                        <i class="fas fa-info-circle"></i> About
+                    </a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Configuration
+        const CONFIG = {
+            // Change this to your deployed backend URL
+            BACKEND_URL: 'https://your-bedtime-story-app.herokuapp.com',
+            
+            getApiUrl: function() {
+                if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                    return 'http://localhost:5000';
+                } else {
+                    return this.BACKEND_URL;
+                }
+            }
+        };
+
+        // Update backend status
+        document.getElementById('backendUrl').textContent = CONFIG.getApiUrl();
+        
+        // Check backend status
+        fetch(`${CONFIG.getApiUrl()}/api/health`)
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('backendStatus').innerHTML = 
+                    '<span style="color: green;">✅ Connected</span>';
+            })
+            .catch(error => {
+                document.getElementById('backendStatus').innerHTML = 
+                    '<span style="color: red;">❌ Backend not available</span>';
+            });
+    </script>
+    <script src="script-with-backend.js"></script>
+</body>
+</html>
